@@ -1,0 +1,20 @@
+Logical Volume > Volume Group > Physical volume > Physical Hard Drive
+
+
+
+Parent physical hard drive -
+String name
+int size
+
+method getName { return name }
+
+Physical Volume extends physical hard drive-
+int UUID
+
+create new UUID
+
+method getUUID { return UUID }
+
+
+VG
+UUID, Name, List of PV, List of LV

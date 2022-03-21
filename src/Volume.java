@@ -10,13 +10,29 @@ public class Volume {
     private HardDrive drive;
 
     public Volume(String name, HardDrive drive) {
-        volumeList.add(this);
+        for (HardDrive d : HardDrive.getDriveList()) {
+            if (!d.getName().equals(drive.getName()))
+            if (getHardDrive() == null) volumeList.add(this);
+        }
         UUID = UUID.randomUUID();
 
     }
 
     public void createVolume() {
 
+    }
+
+    public String getName() {
+        return name;
+    }
+    public int getSize() {
+        return size;
+    }
+    public void setSize(int size) {
+        this.size = size;
+    }
+    public HardDrive getHardDrive() {
+        return drive;
     }
     public UUID getUUID() {
         return UUID;

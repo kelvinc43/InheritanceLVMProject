@@ -46,12 +46,13 @@ public class Main {
                 System.out.print(a.extendVolumeGroup(drive));
             }
             else if (input.equals("lvcreate")) {
+                String drive = input.substring(ind + 1);
                 Install a = new Install();
-                System.out.print(a.getVolumeGroups());
+                System.out.print(a.installLogicalVolume(drive));
             }
             else if (input.equals("lvlist")) {
                 Install a = new Install();
-                System.out.print(a.getVolumeGroups());
+                System.out.print(a.getLogicalVolume());
             }
         }
     }

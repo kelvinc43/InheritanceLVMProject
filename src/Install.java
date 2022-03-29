@@ -134,12 +134,17 @@ public class Install {
         if (d == null) return "No volume group found named " + drive;
         int i = Integer.parseInt(name.substring(0, name.length() - 1));
         if (i > d.getStorage()) return "There is no storage remaining!";
-        LogicalVolume v = new LogicalVolume(i, name, d);
-
-
-
-        VolumeGroup newVG = new VolumeGroup(name, d);
+        LogicalVolume v = new LogicalVolume(name, i, d);
+        d.addLV(v);
         return name + " created!";
+    }
+    public String getLogicalVolume() {
+        String list = "";
+        for (LogicalVolume i : LogicalVolume.getLogicalList()) {
+            list += i.getName() + ": [" + i.getSize() + "G] [" + i.getGroup().getName() + "] [" + i.getUUID() + "]\n";
+        }
+        if (list.length() == 0) return "No Logical Volumes";
+        return list;
     }
 }
 

@@ -5,21 +5,13 @@ public class Volume {
 
     private String name;
     private int size;
-    private UUID UUID;
-    private static ArrayList<Volume> volumeList = new ArrayList<Volume>();
-    private HardDrive drive;
+    private String id;
 
-    public Volume(String name, HardDrive drive) {
-        for (HardDrive d : HardDrive.getDriveList()) {
-            if (!d.getName().equals(drive.getName()))
-            if (getHardDrive() == null) volumeList.add(this);
-        }
-        UUID = UUID.randomUUID();
-
-    }
-
-    public void createVolume() {
-
+    public Volume(String name, int size) {
+        this.name = name;
+        this.size = size;
+        UUID a = UUID.randomUUID();
+        id = a.toString() + "";
     }
 
     public String getName() {
@@ -31,10 +23,7 @@ public class Volume {
     public void setSize(int size) {
         this.size = size;
     }
-    public HardDrive getHardDrive() {
-        return drive;
-    }
-    public UUID getUUID() {
-        return UUID;
+    public String getUUID() {
+        return id;
     }
 }

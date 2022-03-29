@@ -103,16 +103,16 @@ public class Install {
         drive = drive.substring(drive.indexOf(" ") + 1);
         PhysicalVolume volume = null;
         for (PhysicalVolume i : PhysicalVolume.getVolumes()) {
-            if (name.equals(i.getName())) volume = i;
-        }
-        if (volume.getGroup() != null) {
-            return name + " is already part of a volume group.\n";
+            if (drive.equals(i.getName())) volume = i;
         }
         if (volume == null) {
             return name + " is not an existing physical volume.\n";
         }
+        if (volume.getGroup() != null) {
+            return name + " is already part of a volume group.\n";
+        }
         group.addPV(volume);
-        return name + "extended!\n";
+        return name + " extended!\n";
     }
     public String installLogicalVolume(String drive) {
         String name = drive.substring(0, drive.indexOf(" "));
@@ -129,7 +129,7 @@ public class Install {
             if (VG.equals(i.getName())) d = i;
         }
         if (d == null) return "No volume group found named " + drive + "\n";
-        int i = Integer.parseInt(name.substring(0, name.length() - 1));
+        int i = Integer.parseInt(drive.substring(0, drive.length() - 2));
         if (i > d.getStorage()) return "There is no storage remaining!\n";
         LogicalVolume v = new LogicalVolume(name, i, d);
         d.addLV(v);

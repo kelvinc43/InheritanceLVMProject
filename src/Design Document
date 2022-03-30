@@ -1,19 +1,74 @@
 Logical Volume > Volume Group > Physical volume > Physical Hard Drive
 
 
+Main -
+Loops Scanner object asking the user what command they want.
+Substrings the user input
+If input = install-drive install hard drive
+list-drives list hard drives
+pvcreate create Physical Volume
+pvlist list current Physical Volumes
+vgcreate creates Volume Group
+vglist list current Volume Groups
+vgextend adds a physical volume to Volume group
+lvcreate creates a Logical Volume
+lvlist lists current logical volumes
+exit ends program
 
-Parent physical hard drive -
-String name
-int size
+Class hard drive -
+String name - name of hard drive
+int size - size of hard drive
+Volume volume - The Volume Group that is associated with the Hard Drive
+ArrayList<HardDrive> - List of Hard drives
 
-method getName { return name }
+Constructor -
+public HardDrive(String name, int size)
+sets name and size and adds this harddrive to the list of harddrives
 
-Physical Volume extends physical hard drive-
-int UUID
+methods -
+String getName - return name;
+int getSize - return size;
+Volume getVolume - return volume;
+void setVolume - Changes the volume variable
+ArrayList<HardDrive> getHardDrives - returns list of Hard Drives
 
-create new UUID
+-----
+Parent Class Volume
+String name - name of the Volume
+int size - size of the volume
+String id - the unique id (UUID) of the volume
 
-method getUUID { return UUID }
+Constructor -
+public Volume(String name, int size)
+sets name and size and generates a unique id for this current Volume
+
+methods -
+String getName - return name;
+int getSize - return size;
+void setSize - changes the size
+String getUUID - returns id;
+
+-----
+Child Class PhysicalVolume extends volume
+HardDrive harddrive - associated harddrive
+VolumeGroup volumegroup - associated Volume group
+ArrayList<PhysicalVolume> - list of PhysicalVolumes created
+
+Constructor -
+public PhysicalVolume(String name, HardDrive drive)
+super name and size of the drive
+sets the instance variable harddrive to the parameter drive
+adds this PhysicalVolume to the PhysicalVolume list.
+
+methods -
+HardDrive getDrive - returns harddrive
+VolumeGroup getGroup - returns volumegroup
+ArrayList<PhysicalVolume> getVolumes - returns list of PhysicalVolumes
+void setDrive - changes/sets the drive associated with the current volume
+boolean setVolumeGroup - changes/set the volumegroup associated with the current volume; if it has a VG, it will not change anythign
+
+-----
+Child Class VolumeGroup extends volume
 
 
 VG

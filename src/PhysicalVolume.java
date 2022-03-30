@@ -14,16 +14,18 @@ public class PhysicalVolume extends Volume {
     public HardDrive getDrive() {
         return drive;
     }
+    public static ArrayList<PhysicalVolume> getVolumes() {
+        return volumeList;
+    }
+    public VolumeGroup getGroup() { return group; }
+
     public void setDrive(HardDrive drive) {
         this.drive = drive;
         setSize(drive.getSize());
     }
-    public static ArrayList<PhysicalVolume> getVolumes() {
-        return volumeList;
-    }
+
     public boolean setVolumeGroup(VolumeGroup group) {
         if (group != null) return false;
         else group = group; return true;
     }
-    public VolumeGroup getGroup() { return group; }
 }
